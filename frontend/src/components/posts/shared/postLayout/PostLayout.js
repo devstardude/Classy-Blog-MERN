@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import'./PostLayout.css';
-
 const PostLayout = (props)=>{
     return(
     <React.Fragment>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import'./Masthead.css';
-
 const Masthead = (props)=>{
     return (
       <React.Fragment>

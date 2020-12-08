@@ -6,8 +6,6 @@ import { useHttpClient } from "../../shared/hooks/http-hook";
 import Loading from "../../shared/loading/Loading";
 import Masthead from "../../shared/masthead/Masthead";
 
-//import'./SinglePost.css';
-
 const SinglePost = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPost, setLoadedPost] = useState();
@@ -28,7 +26,9 @@ const SinglePost = (props) => {
 
   return (
     <React.Fragment>
+      {/* Loading state  */}
       {isLoading && <Loading asOverlay />}
+      {/* Not Loadiing but Posts loaded  */}
       {!isLoading && loadedPost && (
         <div>
           <Masthead
@@ -38,6 +38,7 @@ const SinglePost = (props) => {
             username={loadedPost.username}
             createdAt={loadedPost.time}
           />
+          {/* Error Handling  */}
           {error && <Error click={clearError} error={error} />}
 
           <article>

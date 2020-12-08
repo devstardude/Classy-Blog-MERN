@@ -16,7 +16,7 @@ const About = (props) => {
               ~ I am a
               <span class="About-me">
                 {" "}
-                Full Stack MERN Web Developer & Designer
+                Full Stack MERN Web Developer & Designer{" "}
               </span>
               focused on crafting
               <span class="About-me"> Great web experiences</span>.
@@ -38,14 +38,7 @@ const About = (props) => {
             </p>
 
             <p>
-              I focusses on crafting great web pages. Coding and Designing have
-              been my areas of interest since my childhood, and I have a great
-              inclination towards the web development and designing
-              specifically.
-            </p>
-
-            <p>
-              I have worked on various projects, and some of them are even live.
+              I have worked on various web projects, and some of them are even live.
               They have received excellent feedback, which motivates me to
               explore this field more and more
             </p>

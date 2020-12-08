@@ -12,7 +12,6 @@ import Loading from "../../shared/loading/Loading";
 import Masthead from "../../shared/masthead/Masthead";
 import FormLayout from "../../posts/shared/formLayout/FormLayout";
 import Error from "../../shared/error/Error";
-//import'./Auth.css';
 
 const Auth = (props) => {
   const auth = useContext(AuthContext);

@@ -6,7 +6,6 @@ import imageUrl from "../../../assets/images/home-bg.jpg";
 import Loading from "../../shared/loading/Loading";
 import PostLayout from "../shared/postLayout/PostLayout";
 import Error from "../../shared/error/Error";
-//import'./Home.css';
 
 const Home = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -23,20 +22,26 @@ const Home = (props) => {
     };
     fetchPosts();
   }, [sendRequest]);
+
+  // when no posts exist in returned array 
   let noPostLoaded;
   if (loadedPosts) {
     if (loadedPosts.length === 0) {
       noPostLoaded = true;
     }
   }
-        
-  
+
   return (
     <React.Fragment>
       <Masthead home url={imageUrl} />
       <PostLayout>
+        {/* Loading State  */}
         <div className=" text-center ">{isLoading && <Loading />}</div>
+
+        {/* Error handling */}
         {error && <Error click={clearError} error={error} />}
+
+        {/* When Loading stops and Posts are loaded */}
         {!isLoading && loadedPosts && (
           <div>
             {loadedPosts.map((post) => (
@@ -51,6 +56,8 @@ const Home = (props) => {
             ))}
           </div>
         )}
+
+        {/* When Loading stops But No Post is Loaded */}
         {!isLoading && noPostLoaded && (
           <div className="post-preview text-center">
             <h2 className="post-title">No post to show</h2>

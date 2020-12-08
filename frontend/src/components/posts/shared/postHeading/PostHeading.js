@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import {AuthContext} from "../../../shared/context/auth-context"
 import { useHttpClient } from "../../../shared/hooks/http-hook"
-//import'./PostHeading.css';
 
 const PostHeading = (props) => {
   const auth = useContext(AuthContext);

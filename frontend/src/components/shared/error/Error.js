@@ -1,7 +1,5 @@
 import React from 'react';
 
-//import'./Error.css';
-
 const Error = (props)=>{
     return (
       <div class="alert alert-danger alert-dismissible fade show" role="alert">

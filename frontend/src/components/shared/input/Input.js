@@ -2,7 +2,6 @@ import React, { useReducer, useEffect } from "react";
 import { validate } from "../../../utils/validators";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
-//import'./Input.css';
 
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -100,7 +99,6 @@ const Input = (props) => {
         }}
       />
     ) : (
-      //   <textarea id={props.id} rows={props.rows || 3} />
       <TextField
         type={props.type}
         placeholder={props.placeholder}

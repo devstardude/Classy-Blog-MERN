@@ -8,7 +8,7 @@ import imageUrl from "../../../assets/images/home-bg.jpg";
 import PostLayout from "../shared/postLayout/PostLayout";
 import Loading from "../../shared/loading/Loading";
 import Error from "../../shared/error/Error";
-//import'./MyPost.css';
+
 const MyPost = (props) => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -28,12 +28,15 @@ const MyPost = (props) => {
     };
     fetchPosts();
   }, [sendRequest, userId, auth.token]);
-let noPostLoaded;
-if (loadedPosts) {
-  if (loadedPosts.length === 0) {
-    noPostLoaded = true;
+
+  // when no posts exist in returned array
+  let noPostLoaded;
+  if (loadedPosts) {
+    if (loadedPosts.length === 0) {
+      noPostLoaded = true;
+    }
   }
-}
+  //Handler for deleting Posts
   const postDeletedHandler = (deletedPostId) => {
     setLoadedPosts((prevPosts) =>
       prevPosts.filter((post) => post.id !== deletedPostId)
@@ -43,8 +46,13 @@ if (loadedPosts) {
     <React.Fragment>
       <Masthead mypost url={imageUrl} authName={auth.name} />
       <PostLayout>
+        {/* Error Handling */}
         {error && <Error click={clearError} error={error} />}
+
+        {/* Loading State  */}
         <div className=" text-center ">{isLoading && <Loading />}</div>
+
+        {/* No loading but post are loaded  */}
         {!isLoading && loadedPosts && (
           <div>
             {loadedPosts.map((post) => (
@@ -61,6 +69,7 @@ if (loadedPosts) {
             ))}
           </div>
         )}
+        {/* No Loading and No post loaded */}
         {!isLoading && noPostLoaded && (
           <div className="post-preview text-center">
             <h2 className="post-title ">No post to show</h2>
