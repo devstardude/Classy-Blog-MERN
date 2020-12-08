@@ -26,6 +26,7 @@ const PostSchema = new mongoose.Schema({
   },
 });
 
+//Sanitization and conversion of markdown into html
 PostSchema.pre("validate", function (next) {
   if (this.content) {
     this.sanitizedContent = dompurify.sanitize(marked(this.content));

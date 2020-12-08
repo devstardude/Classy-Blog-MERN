@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { validationResult } = require("express-validator");
 const HttpError = require("../models/httpError");
 const Post = require("../models/Post");
+
 //------Get All Posts
 const getPosts = async (req, res, next) => {
   let posts;
@@ -33,7 +34,7 @@ const getSinglePost = async (req, res, next) => {
   res.json({ post: post.toObject({ getters: true }) });
 };
 
-// User's Post
+//------User's Post
 const myPosts = async (req, res, next) => {
   const userId = req.params.uId;
   let userPosts;
@@ -53,7 +54,7 @@ const myPosts = async (req, res, next) => {
   });
 };
 
-//Create Post
+//------Create Post
 const createPost = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -87,6 +88,7 @@ const createPost = async (req, res, next) => {
   res.status(201).json({ post: createdPost });
 };
 
+//------update post
 const updatePost = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -107,8 +109,6 @@ const updatePost = async (req, res, next) => {
     return next(error);
   }
 
-  //check username is same
-
   post.title = title;
   post.description = description;
   post.content = content;
@@ -125,7 +125,7 @@ const updatePost = async (req, res, next) => {
   res.status(200).json({ post: post.toObject({ getters: true }) });
 };
 
-//delete post
+//------delete post
 const deletePost = async (req, res, next) => {
   const postId = req.params.pid;
   let post;
@@ -143,13 +143,6 @@ const deletePost = async (req, res, next) => {
     return next(error);
   }
 
-  // if (post.userId !== req.userData.userId) {
-  //   const error = new HttpError(
-  //     "You are not allowed to delete this place.",
-  //     401
-  //   );
-  //   return next(error);
-  // }
   try {
     await Post.findByIdAndDelete(postId);
   } catch (err) {
@@ -162,6 +155,7 @@ const deletePost = async (req, res, next) => {
 
   res.status(200).json({ message: "Deleted post." });
 };
+
 //Export all controllers
 exports.getPosts = getPosts;
 exports.getSinglePost = getSinglePost;

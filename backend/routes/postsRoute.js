@@ -3,8 +3,6 @@ const { check } = require("express-validator");
 const checkAuth = require("../middlewares/checkAuth");
 const postsController = require("../controllers/postsController.js");
 
-//Import check auth
-
 const router = express.Router();
 
 //--------BlogPosts Routes
@@ -13,8 +11,8 @@ const router = express.Router();
 router.get("/",postsController.getPosts);
 
 router.get("/post/:pId",postsController.getSinglePost);
-router.delete("/delete/:pid", postsController.deletePost);
 
+//(This is a check barrier, further routes are Auth Protected.)
 router.use(checkAuth);
 
 router.get("/myposts/:uId",postsController.myPosts);
@@ -36,5 +34,9 @@ router.patch(
   ],
   postsController.updatePost
 );
+
+//Delete Route
+router.delete("/delete/:pid", postsController.deletePost);
+
 //Export
 module.exports = router;

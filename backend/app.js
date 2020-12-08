@@ -43,7 +43,7 @@ app.use((error, req, res, next) => {
 const onlineDbLink = String(process.env.DB)
 const localDbLink = "mongodb://localhost:27017/classyBlogReactDB";
 mongoose
-  .connect(onlineDbLink, {
+  .connect(localDbLink, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,

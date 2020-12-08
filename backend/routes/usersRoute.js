@@ -5,6 +5,7 @@ const usersController = require("../controllers/usersController");
 
 const router = express.Router();
 
+//-----Sign-up
 router.post(
   "/signup",
   [
@@ -17,6 +18,7 @@ router.post(
   usersController.signup
 );
 
+//-----Sign-in
 router.post("/login", usersController.login);
 
 module.exports = router;

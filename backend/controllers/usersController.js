@@ -11,7 +11,6 @@ const jwt_token = String(process.env.JWT);
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log(errors)
     return next(
       new HttpError("Invalid inputs passed, please check your data.", 422)
     );
@@ -156,5 +155,6 @@ const login = async (req, res, next) => {
    });
 }
 
+//export controller
 exports.signup = signup;
 exports.login = login;
