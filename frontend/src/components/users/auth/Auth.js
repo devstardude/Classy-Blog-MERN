@@ -12,9 +12,11 @@ import Loading from "../../shared/loading/Loading";
 import Masthead from "../../shared/masthead/Masthead";
 import FormLayout from "../../posts/shared/formLayout/FormLayout";
 import Error from "../../shared/error/Error";
+import * as Scroll from "react-scroll";
 
 const Auth = (props) => {
   const auth = useContext(AuthContext);
+  var scroll = Scroll.animateScroll;
   const [isLoginMode, setIsLoginMode] = useState(true);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -53,6 +55,7 @@ const Auth = (props) => {
       );
     }
     setIsLoginMode((prevMode) => !prevMode);
+    scroll.scrollToTop();
   };
 
   const authSubmitHandler = async (event) => {
